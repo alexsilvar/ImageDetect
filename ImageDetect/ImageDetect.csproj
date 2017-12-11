@@ -82,6 +82,7 @@
     <Compile Include="Connection.Designer.cs">
       <DependentUpon>Connection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enviorment.cs" />
     <Compile Include="MainScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Robo.cs" />
+    <Compile Include="Strategy.cs" />
     <Compile Include="Video_Device.cs" />
     <EmbeddedResource Include="CameraDetect.resx">
       <DependentUpon>CameraDetect.cs</DependentUpon>

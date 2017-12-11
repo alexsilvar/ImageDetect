@@ -26,3 +26,6 @@ C:\Users\Avell B155 MAX\Documents\Visual Studio 2015\Projects\ImageDetect\ImageD
 C:\Users\Avell B155 MAX\Documents\Visual Studio 2015\Projects\ImageDetect\ImageDetect\obj\Debug\ImageDetect.Connection.resources
 C:\Users\Avell B155 MAX\Documents\Visual Studio 2015\Projects\ImageDetect\ImageDetect\bin\Debug\InTheHand.Net.Personal.dll
 C:\Users\Avell B155 MAX\Documents\Visual Studio 2015\Projects\ImageDetect\ImageDetect\bin\Debug\InTheHand.Net.Personal.xml
+C:\Users\Avell B155 MAX\Desktop\ImageDetect-master\ImageDetect\bin\Debug\ImageDetect.exe.config
+C:\Users\Avell B155 MAX\Desktop\ImageDetect-master\ImageDetect\obj\Debug\ImageDetect.exe
+C:\Users\Avell B155 MAX\Desktop\ImageDetect-master\ImageDetect\obj\Debug\ImageDetect.pdb

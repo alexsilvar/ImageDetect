@@ -131,6 +131,11 @@ namespace ImageDetect
                     _hsvFrame = temp.Convert<Hsv, Byte>();
                     _hsvFrame._SmoothGaussian(5, 5, 0.1, 0.1);
 
+                    //Sempre detecta os robôs
+                    Robo[] robos = null;
+                    try { robos = detect_time(); } catch { }
+
+                    //Pode ou não mostrar as views
                     if (Mostrar_cbox.Checked)
                     {
                         //Pegando a imagem dentro do range determinado
@@ -150,7 +155,8 @@ namespace ImageDetect
                         //Robos
                         try
                         {
-                            Robo[] robos = detect_time();
+                            //robos = detect_time();
+
                             Color[] cores = { Color.Magenta, Color.Green, Color.Yellow };
                             if (robos != null)
                             {
@@ -183,7 +189,7 @@ namespace ImageDetect
             }
         }
 
-        //MEXENDO NISSO AGORA, JOIN DE IMAGENS
+        //Seleciona a imagem HSV a ser retornada de acordo com o texto do combobox
         private Image<Gray, Byte> things_to_show(string target = null)
         {
             Image<Gray, Byte> inRangeFrame = null;
@@ -380,8 +386,6 @@ namespace ImageDetect
             // Set the RGB cvScalar with G B R, you can use this values as you want too..
             return new Bgr(bB, bG, bR); // R component
         }
-
-
 
         #endregion
 
@@ -707,9 +711,73 @@ namespace ImageDetect
 
         }
 
+        /**
+         * @param robos: Vetor contendo robôs controlados
+         * @param bola: Posiçao da bola no campo
+         * @return Posicao do robô a ser movimentado
+        **/
+        private int decide_Robo(Robo[] robos, Point bola)
+        {
+            int pos = 0;
+            double dist = Math.Sqrt(Math.Pow((robos[0].Position.X - bola.X), 2) + Math.Pow((robos[0].Position.Y - bola.Y), 2));
+            //Adicionar verificações de se robo é o atacante, goleiro etc
+            for (int i = 1; i < robos.Length; i++)
+            {
+                double nDist = Math.Sqrt(Math.Pow((robos[i].Position.X - bola.X), 2) + Math.Pow((robos[i].Position.Y - bola.Y), 2));
+                if (nDist < dist)
+                {
+                    pos = i;
+                    dist = nDist;
+                }
+            }
+            return pos;
+        }
+
+
+        /// <summary>
+        /// Função que define a movimentação do robô passado por parâmetros
+        /// </summary>
+        /// <param name="robo">Robo que vai se movimentar - Terá seu parametro rodas modificado</param>
+        /// <param name="bola">Posicao da bola para fins de cálculo</param>
+        private void define_movimento(Robo robo, Point bola)
+        {
+            //Calcular angulaçao e setar movimento das rodas +-100%
+
+            //Segmento de reta do centro do robô até a bola
+            LineSegment2D tracadoBola = new LineSegment2D(robo.Position, bola);
+            double angulo = tracadoBola.GetExteriorAngleDegree(robo.Orientation);
+            if (angulo > 90)
+            {
+                if (angulo <= 10)
+                {
+                    double[] r = new double[2];
+                    r[0] = 100;
+                    r[1] = 100;
+                    robo.Rodas = r;
+                }
+            }
+        }
+
         private void fps_Click(object sender, EventArgs e)
         {
-            fps.Text = "FPS: " + _capture.GetCaptureProperty(CapProp.FrameCount);
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            LineSegment2D l1 = new LineSegment2D(new Point(0, 0), new Point(10, 10));
+            LineSegment2D l2 = new LineSegment2D(new Point(0, 0), new Point(-10, -10));
+
+            //funcao SIDE: direita da linha: -1 esquerda da linha:+1 encima =0;
+            //MessageBox.Show("Direita:  "+ l1.Side(new Point(0, 100)));
+            //MessageBox.Show("Direita:  " + l1.GetExteriorAngleDegree(l2));
         }
     }
 }

@@ -34,7 +34,9 @@
             this.devices = new InTheHand.Windows.Forms.SelectBluetoothDeviceDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.Parear_btn = new System.Windows.Forms.Button();
+            this.Connect_btn = new System.Windows.Forms.Button();
+            this.Comunicar_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Find_btn
@@ -45,7 +47,6 @@
             this.Find_btn.TabIndex = 0;
             this.Find_btn.Text = "Buscar";
             this.Find_btn.UseVisualStyleBackColor = true;
-            this.Find_btn.Click += new System.EventHandler(this.Find_btn_Click);
             // 
             // devices
             // 
@@ -68,19 +69,42 @@
             this.listBox1.Size = new System.Drawing.Size(200, 134);
             this.listBox1.TabIndex = 3;
             // 
-            // progressBar1
+            // Parear_btn
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 152);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(200, 23);
-            this.progressBar1.TabIndex = 4;
+            this.Parear_btn.Enabled = false;
+            this.Parear_btn.Location = new System.Drawing.Point(232, 56);
+            this.Parear_btn.Name = "Parear_btn";
+            this.Parear_btn.Size = new System.Drawing.Size(104, 38);
+            this.Parear_btn.TabIndex = 4;
+            this.Parear_btn.Text = "Parear";
+            this.Parear_btn.UseVisualStyleBackColor = true;
+            // 
+            // Connect_btn
+            // 
+            this.Connect_btn.Location = new System.Drawing.Point(232, 100);
+            this.Connect_btn.Name = "Connect_btn";
+            this.Connect_btn.Size = new System.Drawing.Size(104, 38);
+            this.Connect_btn.TabIndex = 5;
+            this.Connect_btn.Text = "Conectar";
+            this.Connect_btn.UseVisualStyleBackColor = true;
+            // 
+            // Comunicar_btn
+            // 
+            this.Comunicar_btn.Location = new System.Drawing.Point(232, 144);
+            this.Comunicar_btn.Name = "Comunicar_btn";
+            this.Comunicar_btn.Size = new System.Drawing.Size(104, 38);
+            this.Comunicar_btn.TabIndex = 6;
+            this.Comunicar_btn.Text = "Comunicar";
+            this.Comunicar_btn.UseVisualStyleBackColor = true;
             // 
             // Connection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 297);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.Comunicar_btn);
+            this.Controls.Add(this.Connect_btn);
+            this.Controls.Add(this.Parear_btn);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Find_btn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -98,6 +122,8 @@
         private InTheHand.Windows.Forms.SelectBluetoothDeviceDialog devices;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button Parear_btn;
+        private System.Windows.Forms.Button Connect_btn;
+        private System.Windows.Forms.Button Comunicar_btn;
     }
 }

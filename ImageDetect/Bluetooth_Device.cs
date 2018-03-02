@@ -10,11 +10,19 @@ namespace ImageDetect
     {
         private string NomeDoDispositivo { get; set; }
         private uint Sap { get; set; }
+        private BluetoothDeviceInfo dispositivo;
+
+        public BluetoothDeviceInfo Dispositivo {
+            get {
+                return dispositivo;
+            }
+        }
 
         public Bluetooth_Device(BluetoothDeviceInfo dispositivo_info)
         {
             this.NomeDoDispositivo = dispositivo_info.DeviceName;
             this.Sap = dispositivo_info.DeviceAddress.Sap;
+            this.dispositivo = dispositivo_info;
         }
         public override string ToString()
         {

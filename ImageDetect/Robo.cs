@@ -9,6 +9,9 @@ namespace ImageDetect
         //private Point position;
         private LineSegment2D orientation;
         private string name;
+        private double[] rodas;
+
+        public double[] Rodas { get; set; }
 
         public Point Position
         {

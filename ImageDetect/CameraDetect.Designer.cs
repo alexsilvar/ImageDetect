@@ -42,17 +42,19 @@ namespace ImageDetect
             this.ResetCorte_btn = new System.Windows.Forms.Button();
             this.Mostrar_cbox = new System.Windows.Forms.CheckBox();
             this.Finding_cb = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.testesImageBox = new Emgu.CV.UI.ImageBox();
-            this.fps = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.captureImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.formatedImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blobsImageBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testesImageBox)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // captureImageBox
@@ -81,6 +83,17 @@ namespace ImageDetect
             this.formatedImageBox.TabIndex = 1;
             this.formatedImageBox.TabStop = false;
             // 
+            // blobsImageBox
+            // 
+            this.blobsImageBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blobsImageBox.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
+            this.blobsImageBox.Location = new System.Drawing.Point(0, 0);
+            this.blobsImageBox.MaximumSize = new System.Drawing.Size(640, 480);
+            this.blobsImageBox.Name = "blobsImageBox";
+            this.blobsImageBox.Size = new System.Drawing.Size(480, 270);
+            this.blobsImageBox.TabIndex = 2;
+            this.blobsImageBox.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.captureImageBox);
@@ -91,7 +104,7 @@ namespace ImageDetect
             // 
             // Capture_btn
             // 
-            this.Capture_btn.Location = new System.Drawing.Point(219, 10);
+            this.Capture_btn.Location = new System.Drawing.Point(342, 9);
             this.Capture_btn.Name = "Capture_btn";
             this.Capture_btn.Size = new System.Drawing.Size(75, 21);
             this.Capture_btn.TabIndex = 1;
@@ -111,7 +124,7 @@ namespace ImageDetect
             // 
             this.Cameras_cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cameras_cb.FormattingEnabled = true;
-            this.Cameras_cb.Location = new System.Drawing.Point(12, 10);
+            this.Cameras_cb.Location = new System.Drawing.Point(135, 9);
             this.Cameras_cb.Name = "Cameras_cb";
             this.Cameras_cb.Size = new System.Drawing.Size(201, 21);
             this.Cameras_cb.TabIndex = 14;
@@ -175,16 +188,6 @@ namespace ImageDetect
             this.Finding_cb.Size = new System.Drawing.Size(95, 21);
             this.Finding_cb.TabIndex = 19;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(417, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.testesImageBox);
@@ -204,34 +207,33 @@ namespace ImageDetect
             this.testesImageBox.TabIndex = 2;
             this.testesImageBox.TabStop = false;
             // 
-            // fps
-            // 
-            this.fps.AutoSize = true;
-            this.fps.Location = new System.Drawing.Point(263, 510);
-            this.fps.Name = "fps";
-            this.fps.Size = new System.Drawing.Size(35, 13);
-            this.fps.TabIndex = 22;
-            this.fps.Text = "label1";
-            this.fps.Click += new System.EventHandler(this.fps_Click);
-            // 
-            // blobsImageBox
-            // 
-            this.blobsImageBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blobsImageBox.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
-            this.blobsImageBox.Location = new System.Drawing.Point(0, 0);
-            this.blobsImageBox.MaximumSize = new System.Drawing.Size(640, 480);
-            this.blobsImageBox.Name = "blobsImageBox";
-            this.blobsImageBox.Size = new System.Drawing.Size(480, 270);
-            this.blobsImageBox.TabIndex = 2;
-            this.blobsImageBox.TabStop = false;
-            // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.blobsImageBox);
             this.panel4.Location = new System.Drawing.Point(1031, 41);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(480, 270);
             this.panel4.TabIndex = 23;
-            this.panel4.Controls.Add(this.blobsImageBox);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 13);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Dispositivo de Captura:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(342, 492);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // CameraDetect
             // 
@@ -239,10 +241,10 @@ namespace ImageDetect
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1612, 604);
             this.ControlBox = false;
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.fps);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.Finding_cb);
             this.Controls.Add(this.Mostrar_cbox);
             this.Controls.Add(this.ResetCorte_btn);
@@ -258,10 +260,12 @@ namespace ImageDetect
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.captureImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.formatedImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blobsImageBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.testesImageBox)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,10 +287,10 @@ namespace ImageDetect
         private System.Windows.Forms.Button ResetCorte_btn;
         private System.Windows.Forms.CheckBox Mostrar_cbox;
         private System.Windows.Forms.ComboBox Finding_cb;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label fps;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
